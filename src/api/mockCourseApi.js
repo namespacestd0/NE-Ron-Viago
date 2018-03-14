@@ -7,7 +7,7 @@ const courses = [
   {
     id: "waylon-dalton",
     title: "Waylon Dalton",
-    watchHref: "http://pluralsight.com/courses/react-creating-reusable-components",
+    watchHref: "Enrolled",
     authorId: "Read-PPT with Issac Chu (No Phd)",
     length: "(251)546-9442",
     category: "10"
@@ -15,7 +15,7 @@ const courses = [
   {
     id: "justine-henderson",
     title: "Justine Henderson",
-    watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
+    watchHref: "Enrolled",
     authorId: "Read-PPT with Issac Chu (No Phd)",
     length: "(125)546-4478",
     category: "6"
@@ -23,7 +23,7 @@ const courses = [
   {
     id: "abdullah-lang",
     title: "Abdullah Lang",
-    watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
+    watchHref: "Enroll",
     authorId: "Learning React and Redux with YouTube",
     length: "(949)569-4371",
     category: "5"
@@ -31,7 +31,7 @@ const courses = [
   {
     id: "marcus-cruz",
     title: "Marcus Cruz",
-    watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+    watchHref: "Enroll",
     authorId: "Stand-up Comody with Ellen Degeneres",
     length: "(671)925-1352",
     category: "7"
@@ -39,7 +39,7 @@ const courses = [
   {
     id: "thalia-cobb",
     title: "Thalia Cobb",
-    watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+    watchHref: "Enroll",
     authorId: "Stand-up Comody with Ellen Degeneres",
     length: "(226)906-2721",
     category: "5"
@@ -47,7 +47,7 @@ const courses = [
   {
     id: "mathias-little",
     title: "Mathias Little",
-    watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
+    watchHref: "Enroll",
     authorId: "Learning React and Redux with YouTube",
     length: "(630)446-8851",
     category: "3"
@@ -90,7 +90,7 @@ class CourseApi {
           //The server would generate ids and watchHref's for new courses in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
           course.id = generateId(course);
-          course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
+          course.watchHref = "Enroll";
           courses.push(course);
         }
 

@@ -14,11 +14,30 @@ export function updateCourseSuccess(course) {
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
+export function deleteCustomerSuccess(customerID) {
+  return {type: types.DELETE_CUSTOMER_SUCCESS, customerID};
+}
+
+export function enrollCustomerLocal(customerID) {
+  return {type: types.ENROLL_CUSTOMER_LOCAL, customerID};
+}
+
 export function loadCourses() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
     return courseApi.getAllCourses().then(courses => {
       dispatch(loadCoursesSuccess(courses));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function deleteCustomer(cutomerID) {
+  return function(dispatch) {
+    dispatch(beginAjaxCall());
+    return courseApi.deleteCourse(cutomerID).then(() => {
+      dispatch(deleteCustomerSuccess(cutomerID));
     }).catch(error => {
       throw(error);
     });
@@ -36,4 +55,5 @@ export function saveCourse(course) {
       throw(error);
     });
   };
+  
 }

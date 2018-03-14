@@ -18,7 +18,24 @@ export default function courseReducer(state = initialState.courses, action) {
         Object.assign({}, action.course)
       ];
 
+    case types.DELETE_CUSTOMER_SUCCESS:
+      return [
+        ...state.filter(course => course.id !== action.customerID)
+      ];
+
+    case types.ENROLL_CUSTOMER_LOCAL:
+      return [
+        ...state.filter(course => course.id !== action.customerID),
+        enrolltoEnrolled(state.filter(course => course.id == action.customerID)[0])
+      ];
+
     default:
       return state;
   }
+}
+
+function enrolltoEnrolled(order) {
+  let o = Object.assign({}, order)
+  o.watchHref = "Enrolled";
+  return o;
 }
