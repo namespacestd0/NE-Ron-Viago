@@ -35,7 +35,7 @@ export default function courseReducer(state = initialState.courses, action) {
 }
 
 function enrolltoEnrolled(order) {
-  let o = Object.assign({}, order)
+  let o = Object.assign({}, order);
   o.watchHref = "Enrolled";
   return o;
 }

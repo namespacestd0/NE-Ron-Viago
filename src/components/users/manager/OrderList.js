@@ -24,8 +24,8 @@ const CourseList = ({ courses, deleteCustomer, enrollCustomer }) => {
             enrollCustomer={enrollCustomer}
           />
         ).slice().sort(function (a, b) {
-          var nameA = a.props.course.id;
-          var nameB = b.props.course.id;
+          let nameA = a.props.course.id;
+          let nameB = b.props.course.id;
           if (nameA < nameB) {
             return -1;
           }
