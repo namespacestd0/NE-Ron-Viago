@@ -31,7 +31,7 @@ const courses = [
   {
     id: "marcus-cruz",
     title: "Marcus Cruz",
-    watchHref: "Enroll",
+    watchHref: "Enrolled",
     authorId: "Stand-up Comody with Ellen Degeneres",
     length: "(671)925-1352",
     category: "7"
