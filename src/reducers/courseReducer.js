@@ -43,7 +43,7 @@ export default function courseReducer(state = initialState.courses, action) {
 function fulfill(order) {
   let o = Object.assign({}, order);
   if (o.category >= 1)
-    o.category -= 1;
+    o.category = (o.category - 1).toString();
   return o;
 }
 
