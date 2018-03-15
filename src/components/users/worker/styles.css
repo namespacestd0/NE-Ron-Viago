@@ -1,0 +1,6 @@
+/* Styles */
+#workComponent {
+  min-width: 550px;
+  max-width: 850px;
+  margin: auto;
+}

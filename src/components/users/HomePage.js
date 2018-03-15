@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import RequestQuotePage from './customer/RequestQuotePage';
 
 class HomePage extends React.Component {
   render() {

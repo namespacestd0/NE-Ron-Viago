@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import './styles.css';
 
 class AssignedWorkItem extends React.Component {
   render() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron" id="workComponent">
         <h1>{this.props.h1}</h1>
         <p>{this.props.h2}</p>
         <p>{this.props.h3}</p>

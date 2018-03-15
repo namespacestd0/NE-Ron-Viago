@@ -23,7 +23,7 @@ const OrderInput = ({course, allAuthors, onSave, onChange, saving, errors, butto
       <TextInput
         name="category"
         label="Hours"
-        value={course.category.toString()}
+        value={course.category}
         onChange={onChange}
         error={errors.category}/>
 
@@ -34,12 +34,12 @@ const OrderInput = ({course, allAuthors, onSave, onChange, saving, errors, butto
         onChange={onChange}
         error={errors.length}/>
 
-      <input
+      <div style={buttonText=="Save"?{textAlign:"left"}:{textAlign:"center"}}><input
         type="submit"
         disabled={saving}
         value={buttonText}
         className="btn btn-primary"
-        onClick={onSave}/>
+        onClick={onSave}/></div>
     </form>
   );
 };
