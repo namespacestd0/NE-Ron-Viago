@@ -22,6 +22,10 @@ export function enrollCustomerLocal(customerID) {
   return {type: types.ENROLL_CUSTOMER_LOCAL, customerID};
 }
 
+export function fulfillCustomerLocal(customerID) {
+  return {type: types.FULFILL_CUSTOMER_LOCAL, customerID};
+}
+
 export function loadCourses() {
   return function(dispatch) {
     dispatch(beginAjaxCall());

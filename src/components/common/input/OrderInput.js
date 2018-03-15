@@ -23,7 +23,7 @@ const OrderInput = ({course, allAuthors, onSave, onChange, saving, errors, butto
       <TextInput
         name="category"
         label="Hours"
-        value={course.category}
+        value={course.category.toString()}
         onChange={onChange}
         error={errors.category}/>
 

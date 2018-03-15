@@ -10,7 +10,7 @@ const courses = [
     watchHref: "Enrolled",
     authorId: "Read-PPT with Issac Chu (No Phd)",
     length: "(251)546-9442",
-    category: 10
+    category: "10"
   },
   {
     id: "justine-henderson",
@@ -18,7 +18,7 @@ const courses = [
     watchHref: "Enrolled",
     authorId: "Read-PPT with Issac Chu (No Phd)",
     length: "(125)546-4478",
-    category: 6
+    category: "6"
   },
   {
     id: "abdullah-lang",
@@ -26,7 +26,7 @@ const courses = [
     watchHref: "Enroll",
     authorId: "Learning React and Redux with YouTube",
     length: "(949)569-4371",
-    category: 5
+    category: "5"
   },
   {
     id: "marcus-cruz",
@@ -34,7 +34,7 @@ const courses = [
     watchHref: "Enrolled",
     authorId: "Stand-up Comody with Ellen Degeneres",
     length: "(671)925-1352",
-    category: 7
+    category: "7"
   },
   {
     id: "thalia-cobb",
@@ -42,7 +42,7 @@ const courses = [
     watchHref: "Enroll",
     authorId: "Stand-up Comody with Ellen Degeneres",
     length: "(226)906-2721",
-    category: 5
+    category: "5"
   },
   {
     id: "mathias-little",
@@ -50,7 +50,7 @@ const courses = [
     watchHref: "Enroll",
     authorId: "Learning React and Redux with YouTube",
     length: "(630)446-8851",
-    category: 3
+    category: "3"
   }
 ];
 

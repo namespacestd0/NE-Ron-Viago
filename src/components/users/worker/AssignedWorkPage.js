@@ -1,39 +1,72 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as courseActions from '../../../actions/courseActions';
+import { fulfillCustomerLocal } from '../../../actions/courseActions';
 import { browserHistory } from 'react-router';
 import toastr from 'toastr';
 import AssignedWorkItem from './AssignedWorkItem';
 
+const textNothingToDisplay = {
+  title: 'All Done',
+  authorId: 'No More Tasks'
+};
+
+function filterAssignedUnfinishedCourse(arrayOfCourses) {
+  return arrayOfCourses.filter(course =>
+    course.watchHref == "Enrolled" && course.category != 0)
+    .slice().sort(function (a, b) {
+      let nameA = a.id;
+      let nameB = b.id;
+      if (nameA < nameB) { return -1; }
+      if (nameA > nameB) { return 1; }
+      return 0;
+    });
+}
+
 class AssignedWorkPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      eligibleCourses: filterAssignedUnfinishedCourse(this.props.courses),
+      indexOfCourseToDisplay: 0,
+      textToDisplay: textNothingToDisplay
+    };
     this.reduceHour = this.reduceHour.bind(this);
   }
-
-  reduceHour(id) {
-    // this.props.dispatch(this.props.actions.enrollCustomerLocal(id));
+  componentWillMount() {
+    if (this.state.eligibleCourses.length > 0)
+      this.setState({ textToDisplay: this.state.eligibleCourses[this.state.indexOfCourseToDisplay] });
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.courses != this.props.courses) {
+      let newEligibleCourses = filterAssignedUnfinishedCourse(nextProps.courses);
+      if (newEligibleCourses.length > 0)
+        this.setState({
+          textToDisplay: newEligibleCourses[this.state.indexOfCourseToDisplay],
+          indexOfCourseToDisplay: 0,
+          eligibleCourses: newEligibleCourses
+        });
+      else
+        this.setState({
+          textToDisplay: textNothingToDisplay,
+          indexOfCourseToDisplay: 0,
+          eligibleCourses: newEligibleCourses
+        });
+    }
+  }
+  reduceHour() {
+    this.props.dispatch(fulfillCustomerLocal(this.state.eligibleCourses[this.state.indexOfCourseToDisplay].id));
   }
 
   render() {
-    const { courses } = this.props;
-    let itemToDisplay = {
-      title: 'All Done',
-      authorId: 'No More Tasks'
-    };
-    let enrolledCourses = courses.filter(course => 
-      course.watchHref == "Enrolled" && course.category != 0);
-    if (enrolledCourses.length>0)
-      itemToDisplay = enrolledCourses[0];
     return (
-      <AssignedWorkItem 
-        h1 = {itemToDisplay.title}
-        h2 = {itemToDisplay.authorId}
-        h3 = {itemToDisplay.length}
-        buttonHidden = {itemToDisplay.title == 'All Done' ? true : false}
-        buttonText = {`${itemToDisplay.category} Hours Left`}
-        buttonAction = {this.reduceHour}
+      <AssignedWorkItem
+        h1={this.state.textToDisplay.title}
+        h2={this.state.textToDisplay.authorId}
+        h3={this.state.textToDisplay.length}
+        buttonHidden={this.state.textToDisplay.title == 'All Done' ? true : false}
+        buttonText={`${this.state.textToDisplay.category} Hours Left`}
+        buttonAction={this.reduceHour}
       />
     );
   }
@@ -41,7 +74,6 @@ class AssignedWorkPage extends React.Component {
 
 AssignedWorkPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
@@ -51,11 +83,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(courseActions, dispatch),
-    dispatch: dispatch
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AssignedWorkPage);
+export default connect(mapStateToProps)(AssignedWorkPage);

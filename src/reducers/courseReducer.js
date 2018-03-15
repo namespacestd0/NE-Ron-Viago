@@ -29,9 +29,22 @@ export default function courseReducer(state = initialState.courses, action) {
         enrolltoEnrolled(state.filter(course => course.id == action.customerID)[0])
       ];
 
+    case types.FULFILL_CUSTOMER_LOCAL:
+      return [
+        ...state.filter(course => course.id !== action.customerID),
+        fulfill(state.filter(course => course.id == action.customerID)[0])
+      ];
+
     default:
       return state;
   }
+}
+
+function fulfill(order) {
+  let o = Object.assign({}, order);
+  if (o.category >= 1)
+    o.category -= 1;
+  return o;
 }
 
 function enrolltoEnrolled(order) {
